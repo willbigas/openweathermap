@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import principal.Principal;
+import dao.DaoServer;
 
 /**
  *
@@ -13,13 +8,14 @@ import principal.Principal;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    Principal principal;
+    DaoServer daoServer;
 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        daoServer = new DaoServer();
     }
 
     /**
@@ -64,7 +60,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Double retorno = Principal.retornaTemperatura();
+        Double retorno = daoServer.retornaTemperatura();
         jButton1.setText(decimalFormat(retorno) + "ºC em Palhoça/SC");
     }//GEN-LAST:event_jButton1ActionPerformed
 
