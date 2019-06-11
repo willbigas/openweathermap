@@ -1,6 +1,8 @@
 package view;
 
+import control.TelaPrincipalFacade;
 import dao.DaoServer;
+import javax.swing.JButton;
 
 /**
  *
@@ -8,14 +10,17 @@ import dao.DaoServer;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    DaoServer daoServer;
+    TelaPrincipalFacade principalFacade;
 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
-        daoServer = new DaoServer();
+    }
+    public TelaPrincipal(TelaPrincipalFacade facade) {
+        initComponents();
+        principalFacade = facade;
     }
 
     /**
@@ -27,14 +32,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        buttonClick = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Clique ME");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonClick.setText("Clique ME");
+        buttonClick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonClickActionPerformed(evt);
             }
         });
 
@@ -44,25 +49,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(152, 152, 152)
-                .addComponent(jButton1)
+                .addComponent(buttonClick)
                 .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addComponent(jButton1)
+                .addComponent(buttonClick)
                 .addContainerGap(184, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClickActionPerformed
         // TODO add your handling code here:
-        Double retorno = daoServer.retornaTemperatura();
-        jButton1.setText(decimalFormat(retorno) + "ºC em Palhoça/SC");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        principalFacade.pegaNovaTemperaturaAction();
+    }//GEN-LAST:event_buttonClickActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,18 +104,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonClick;
     // End of variables declaration//GEN-END:variables
-/**
-     * Formatando um Decimal em Valor decimal Normal - "1,110.00"
-     *
-     * @param numero
-     * @return
-     */
-    public static String decimalFormat(Double numero) {
-        java.text.DecimalFormat df = new java.text.DecimalFormat();
-        df.applyPattern("###,###,##0.00");
-        return df.format(numero);
+
+    public JButton getButtonClick() {
+        return buttonClick;
     }
+
+    public void setButtonClick(JButton buttonClick) {
+        this.buttonClick = buttonClick;
+    }
+
+
 
 }

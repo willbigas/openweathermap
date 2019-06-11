@@ -5,6 +5,7 @@
  */
 package principal;
 
+import control.TelaPrincipalFacade;
 import view.TelaPrincipal;
 
 /**
@@ -14,11 +15,7 @@ import view.TelaPrincipal;
 public class Principal {
 
     public static void main(String[] args) {
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
-        
-        
-     
+        TelaPrincipalFacade telaPrincipalFacade = new TelaPrincipalFacade();
     }
     
 }
